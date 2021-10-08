@@ -12,12 +12,18 @@ public class WeatherFetchRouter extends RouteBuilder {
     @Autowired
     private CustomLoggerUtil timeUtil;
 
+    @Value("${weather.apiKey}")
+    private String weatherApiKey;
+
+    @Value("${weather.fetchDelayMs}")
+    private String weatherFetchDelayMs;
+
     @Override
     public void configure() throws Exception {
-        String endPoint = "weather://weather-fetcher"
-                            + "?location=" + "Madrid,Spain"
-                            + "&delay=" + "1000"
-                            + "&appid=" + "aa67371fffed03e5964428e6c7d83927";
+        String endPoint = "weather://weather-fetcher?"
+                + "location=Madrid,Spain"
+                + "&delay=" + weatherFetchDelayMs
+                + "&appid=" + weatherApiKey;
         from(endPoint)
 //                .log("${body}")
                 .bean(timeUtil, "logReceivedMessage")
