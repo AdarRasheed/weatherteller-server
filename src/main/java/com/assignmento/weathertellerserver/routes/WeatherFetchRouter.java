@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class WeatherFetchRouter extends RouteBuilder {
 
+    @Autowired
+    private CustomLoggerUtil timeUtil;
+
     @Override
     public void configure() throws Exception {
         String endPoint = "weather://weather-fetcher"
@@ -17,6 +20,7 @@ public class WeatherFetchRouter extends RouteBuilder {
                             + "&appid=" + "aa67371fffed03e5964428e6c7d83927";
         from(endPoint)
 //                .log("${body}")
+                .bean(timeUtil, "logReceivedMessage")
                 .to("log:weather-fetcher");
     }
 
