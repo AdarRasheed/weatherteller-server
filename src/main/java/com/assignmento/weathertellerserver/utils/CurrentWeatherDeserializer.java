@@ -5,7 +5,7 @@ import com.google.gson.*;
 
 import java.lang.reflect.Type;
 
-public class CurrentWeatherDeserializerFromJson  implements JsonDeserializer<Weather> {
+public class CurrentWeatherDeserializer implements JsonDeserializer<Weather> {
 
     @Override
     public Weather deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
