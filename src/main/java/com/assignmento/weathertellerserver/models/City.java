@@ -11,7 +11,7 @@ public class City {
     private long id;
 
     @Column(name = "openweather_id")
-    private String openweatherId;
+    private Long openweatherId;
 
     @Column(name = "name")
     private String name;
@@ -22,7 +22,7 @@ public class City {
     public City() {
     }
 
-    public City(String openweatherId, String name, String country) {
+    public City(Long openweatherId, String name, String country) {
         this.openweatherId = openweatherId;
         this.name = name;
         this.country = country;
@@ -32,11 +32,11 @@ public class City {
         return id;
     }
 
-    public String getOpenweatherId() {
+    public Long getOpenweatherId() {
         return openweatherId;
     }
 
-    public void setOpenweatherId(String openweatherId) {
+    public void setOpenweatherId(Long openweatherId) {
         this.openweatherId = openweatherId;
     }
 
