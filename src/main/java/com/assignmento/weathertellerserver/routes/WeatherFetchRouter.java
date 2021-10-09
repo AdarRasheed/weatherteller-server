@@ -20,14 +20,15 @@ public class WeatherFetchRouter extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        String endPoint = "weather://weather-fetcher?"
-                + "location=Madrid,Spain"
+        String endPoint = "weather://weather?"
+                + "location=Lahore,Pakistan"
+                + "&units=metric"
                 + "&delay=" + weatherFetchDelayMs
                 + "&appid=" + weatherApiKey;
         from(endPoint)
 //                .log("${body}")
                 .bean(timeUtil, "logReceivedMessage")
-                .to("log:weather-fetcher");
+                .to("log:weather");
     }
 
 }
