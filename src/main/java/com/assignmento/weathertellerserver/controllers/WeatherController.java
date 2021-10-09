@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,12 +19,12 @@ public class WeatherController {
     @Autowired
     WeatherRepository weatherRepository;
 
-    @GetMapping("/weather-stamps")
-    public ResponseEntity<List<WeatherStamp>> getWeatherstampsByCountry(@RequestParam(required = true) String country) {
+    @GetMapping("/weather-stamps/{cityOpenweatherId}")
+    public ResponseEntity<List<WeatherStamp>> getWeatherstampsByCountry(@PathVariable Long cityOpenweatherId) {
 
         List<WeatherStamp> weatherStamps = new ArrayList<>();
 
-        weatherRepository.findByCityContainingOrderByRecordedOnDesc(country).forEach(weatherStamps::add);
+        weatherRepository.findByCityOpenweatherIdEqualsOrderByRecordedOnDesc(cityOpenweatherId).forEach(weatherStamps::add);
 
         if (weatherStamps.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

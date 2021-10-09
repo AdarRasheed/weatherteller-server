@@ -13,8 +13,8 @@ public class WeatherStamp {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "city")
-    private String city;
+    @Column(name = "city_openweather_id")
+    private Long cityOpenweatherId;
 
     @Column(name = "temperature")
     private Double temperature;
@@ -32,8 +32,8 @@ public class WeatherStamp {
     public WeatherStamp() {
     }
 
-    public WeatherStamp(String city, Double temperature, String weatherInfo, String recordedOn) {
-        this.city = city;
+    public WeatherStamp(Long cityOpenweatherId, Double temperature, String weatherInfo, String recordedOn) {
+        this.cityOpenweatherId = cityOpenweatherId;
         this.temperature = temperature;
         this.weatherInfo = weatherInfo;
         this.recordedOn = recordedOn;
@@ -43,12 +43,12 @@ public class WeatherStamp {
         return id;
     }
 
-    public String getCity() {
-        return city;
+    public Long getCityOpenweatherId() {
+        return cityOpenweatherId;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCityOpenweatherId(Long cityOpenweatherId) {
+        this.cityOpenweatherId = cityOpenweatherId;
     }
 
     public Double getTemperature() {
@@ -86,7 +86,7 @@ public class WeatherStamp {
     @Override
     public String toString() {
         return "WeatherStamp{" +
-                "city='" + city + '\'' +
+                "cityOpenweatherId='" + cityOpenweatherId + '\'' +
                 ", temperature=" + temperature +
                 ", weatherInfo='" + weatherInfo + '\'' +
                 ", recordedOn='" + recordedOn + '\'' +
