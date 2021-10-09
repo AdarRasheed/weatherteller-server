@@ -19,6 +19,9 @@ public class WeatherFetchRouter extends RouteBuilder {
     @Value("${weather.apiKey}")
     private String weatherApiKey;
 
+    @Value("${weather.delay.timeUnit}")
+    private String timeUnit;
+
     @Value("${weather.delay.initial}")
     private String initialDelay;
 
@@ -32,7 +35,7 @@ public class WeatherFetchRouter extends RouteBuilder {
         String endPoint = "weather://current-weather-fetcher?"
                 + "location=" + cityName
                 + "&units=metric"
-                + "&timeUnit=MINUTES"
+                + "&timeUnit=" + timeUnit
                 + "&initialDelay=" + initialDelay
                 + "&delay=" + intervalDelay
                 + "&appid=" + weatherApiKey;
