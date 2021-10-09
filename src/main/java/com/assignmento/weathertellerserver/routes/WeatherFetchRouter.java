@@ -19,11 +19,11 @@ public class WeatherFetchRouter extends RouteBuilder {
     @Value("${weather.apiKey}")
     private String weatherApiKey;
 
-    @Value("${weather.fetchInitialDelayMinutes}")
-    private String weatherFetchInitialDelayMinutes;
+    @Value("${weather.delay.initial}")
+    private String initialDelay;
 
-    @Value("${weather.fetchDelayMinutes}")
-    private String weatherFetchDelayMinutes;
+    @Value("${weather.delay.interval}")
+    private String intervalDelay;
 
     private String cityName = "Lahore,Pakistan";
 
@@ -33,8 +33,8 @@ public class WeatherFetchRouter extends RouteBuilder {
                 + "location=" + cityName
                 + "&units=metric"
                 + "&timeUnit=MINUTES"
-                + "&initialDelay=" + weatherFetchInitialDelayMinutes
-                + "&delay=" + weatherFetchDelayMinutes
+                + "&initialDelay=" + initialDelay
+                + "&delay=" + intervalDelay
                 + "&appid=" + weatherApiKey;
         from(endPoint)
                 .process(exchangeLoggingProcessor)
