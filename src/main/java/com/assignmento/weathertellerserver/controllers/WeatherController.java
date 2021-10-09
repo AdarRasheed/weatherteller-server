@@ -18,7 +18,7 @@ public class WeatherController {
     @Autowired
     WeatherRepository weatherRepository;
 
-    @GetMapping("/weather")
+    @GetMapping("/weather-stamps")
     public ResponseEntity<List<WeatherStamp>> getWeatherstampsByCountry(@RequestParam(required = true) String country) {
 
         List<WeatherStamp> weatherStamps = new ArrayList<>();
