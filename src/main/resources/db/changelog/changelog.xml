@@ -38,6 +38,9 @@
 			<column name="recorded_on" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
+			<column name="reported_on" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
+				<constraints nullable="false" />
+			</column>
 		</createTable>
 	</changeSet>
 

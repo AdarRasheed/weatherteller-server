@@ -1,6 +1,9 @@
 package com.assignmento.weathertellerserver.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "weather_stamps")
@@ -21,6 +24,10 @@ public class WeatherStamp {
 
     @Column(name = "recorded_on")
     private String recordedOn;
+
+    @CreationTimestamp
+    @Column(name = "reported_on")
+    private LocalDateTime reportedOn;
 
     public WeatherStamp() {
     }
@@ -68,13 +75,22 @@ public class WeatherStamp {
         this.recordedOn = recordedOn;
     }
 
+    public LocalDateTime getReportedOn() {
+        return reportedOn;
+    }
+
+    public void setReportedOn(LocalDateTime reportedOn) {
+        this.reportedOn = reportedOn;
+    }
+
     @Override
     public String toString() {
-        return "Weather{" +
+        return "WeatherStamp{" +
                 "city='" + city + '\'' +
                 ", temperature=" + temperature +
-                ", weather-info='" + weatherInfo + '\'' +
-                ", recorded-on=" + recordedOn +
+                ", weatherInfo='" + weatherInfo + '\'' +
+                ", recordedOn='" + recordedOn + '\'' +
+                ", reportedOn=" + reportedOn +
                 '}';
     }
 }

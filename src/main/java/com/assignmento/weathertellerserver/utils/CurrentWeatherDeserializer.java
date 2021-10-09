@@ -4,6 +4,9 @@ import com.assignmento.weathertellerserver.models.WeatherStamp;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 public class CurrentWeatherDeserializer implements JsonDeserializer<WeatherStamp> {
 
@@ -14,7 +17,7 @@ public class CurrentWeatherDeserializer implements JsonDeserializer<WeatherStamp
         String cityName = jObject.get("name").getAsString();
         Double temperature = jObject.get("main").getAsJsonObject().get("temp").getAsDouble();
         String weatherInfo = jObject.get("weather").getAsJsonArray().get(0).getAsJsonObject().get("main").getAsString();
-        String recordedOn = jObject.get("dt").getAsString();
+        String recordedOn = new SimpleDateFormat("H:mm  dd MMM yy").format(new Date(jObject.get("dt").getAsInt()*1000));
 
         return new WeatherStamp(cityName, temperature, weatherInfo, recordedOn);
     }
