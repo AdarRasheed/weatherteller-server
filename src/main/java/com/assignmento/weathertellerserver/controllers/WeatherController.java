@@ -24,7 +24,7 @@ public class WeatherController {
 
         List<WeatherStamp> weatherStamps = new ArrayList<>();
 
-        weatherRepository.findByCityOpenweatherIdEqualsOrderByRecordedOnDesc(cityOpenweatherId).forEach(weatherStamps::add);
+        weatherRepository.findTop5ByCityOpenweatherIdEqualsOrderByReportedOnDesc(cityOpenweatherId).forEach(weatherStamps::add);
 
         if (weatherStamps.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface WeatherRepository extends JpaRepository<WeatherStamp, Long> {
 
-    List<WeatherStamp> findByCityOpenweatherIdEqualsOrderByRecordedOnDesc(Long cityOpenweatherId);
+    List<WeatherStamp> findTop5ByCityOpenweatherIdEqualsOrderByReportedOnDesc(Long cityOpenweatherId);
+
 }
