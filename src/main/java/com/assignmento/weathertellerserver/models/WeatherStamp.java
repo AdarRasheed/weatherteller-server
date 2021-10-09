@@ -22,6 +22,9 @@ public class WeatherStamp {
     @Column(name = "recorded_on")
     private String recordedOn;
 
+    public WeatherStamp() {
+    }
+
     public WeatherStamp(String city, Double temperature, String weatherInfo, String recordedOn) {
         this.city = city;
         this.temperature = temperature;

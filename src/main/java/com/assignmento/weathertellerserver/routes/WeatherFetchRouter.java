@@ -43,7 +43,7 @@ public class WeatherFetchRouter extends RouteBuilder {
                 .process(exchangeLoggingProcessor)
                 .bean(currentWeatherStampMapper, "mapToWeatherStamp")
                 .log("${body}")
-                .to("log:current-weather-fetcher");
+                .to("jpa:com.assignmento.weathertellerserver.models.WeatherStamp");
     }
 
 }
