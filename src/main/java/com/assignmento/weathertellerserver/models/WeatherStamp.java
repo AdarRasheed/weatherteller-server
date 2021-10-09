@@ -1,19 +1,36 @@
 package com.assignmento.weathertellerserver.models;
 
-import java.util.Date;
+import javax.persistence.*;
 
-public class Weather {
+@Entity
+@Table(name = "weather_stamps")
+public class WeatherStamp {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(name = "city")
     private String city;
-    private Double temperature;
-    private String weatherInfo;
-    private String timestamp;
 
-    public Weather(String city, Double temperature, String weatherInfo, String timestamp) {
+    @Column(name = "temperature")
+    private Double temperature;
+
+    @Column(name = "weather_info")
+    private String weatherInfo;
+
+    @Column(name = "recorded_on")
+    private String recordedOn;
+
+    public WeatherStamp(String city, Double temperature, String weatherInfo, String recordedOn) {
         this.city = city;
         this.temperature = temperature;
         this.weatherInfo = weatherInfo;
-        this.timestamp = timestamp;
+        this.recordedOn = recordedOn;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getCity() {
@@ -40,12 +57,12 @@ public class Weather {
         this.weatherInfo = weatherInfo;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public String getRecordedOn() {
+        return recordedOn;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public void setRecordedOn(String recordedOn) {
+        this.recordedOn = recordedOn;
     }
 
     @Override
@@ -54,7 +71,7 @@ public class Weather {
                 "city='" + city + '\'' +
                 ", temperature=" + temperature +
                 ", weather-info='" + weatherInfo + '\'' +
-                ", timestamp=" + timestamp +
+                ", recorded-on=" + recordedOn +
                 '}';
     }
 }

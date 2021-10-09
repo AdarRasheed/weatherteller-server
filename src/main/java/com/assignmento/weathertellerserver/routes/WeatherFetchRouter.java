@@ -1,6 +1,6 @@
 package com.assignmento.weathertellerserver.routes;
 
-import com.assignmento.weathertellerserver.mappers.CurrentWeatherMapper;
+import com.assignmento.weathertellerserver.mappers.CurrentWeatherStampMapper;
 import com.assignmento.weathertellerserver.utils.GenericExchangeLoggingProcessor;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ public class WeatherFetchRouter extends RouteBuilder {
     private GenericExchangeLoggingProcessor exchangeLoggingProcessor;
 
     @Autowired
-    private CurrentWeatherMapper currentWeatherMapper;
+    private CurrentWeatherStampMapper currentWeatherStampMapper;
 
     @Value("${weather.apiKey}")
     private String weatherApiKey;
@@ -41,7 +41,7 @@ public class WeatherFetchRouter extends RouteBuilder {
                 + "&appid=" + weatherApiKey;
         from(endPoint)
                 .process(exchangeLoggingProcessor)
-                .bean(currentWeatherMapper, "mapToWeather")
+                .bean(currentWeatherStampMapper, "mapToWeatherStamp")
                 .log("${body}")
                 .to("log:current-weather-fetcher");
     }
