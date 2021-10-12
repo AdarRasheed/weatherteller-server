@@ -13,12 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * REST controller for managing {@link com.assignmento.weathertellerserver.models.WeatherStamp}.
+ */
 @RestController
 public class WeatherController {
 
     @Autowired
     WeatherRepository weatherRepository;
 
+    /**
+     * {@code GET  /weather-stamps/:cityOpenweatherId} : Retrieve all weather-stamps for a particular country.
+     *
+     * @param cityOpenweatherId the openweather.org platform assigned id for a city
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the list of weatherStamp, or with status {@code 204 (No Content)} if no weatherStamp for requested city yet has been gathered.
+     */
     @GetMapping("/weather-stamps/{cityOpenweatherId}")
     public ResponseEntity<List<WeatherStamp>> getWeatherstampsByCountry(@PathVariable Long cityOpenweatherId) {
 

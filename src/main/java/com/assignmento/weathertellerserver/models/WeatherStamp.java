@@ -5,6 +5,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+/**
+ * A WeatherStamp.
+ */
 @Entity
 @Table(name = "weather_stamps")
 public class WeatherStamp {
@@ -13,18 +16,28 @@ public class WeatherStamp {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    /** Represents openweather.org platform assigned id for a city
+     */
     @Column(name = "city_openweather_id")
     private Long cityOpenweatherId;
 
+    /** Represents temperature in celcius
+     */
     @Column(name = "temperature")
     private Double temperature;
 
+    /** Represents weather condition
+     */
     @Column(name = "weather_info")
     private String weatherInfo;
 
+    /** Represents the date and time at which weather-stamp was recorded by openweather.org platform as "H:mm  dd MMM yy"
+     */
     @Column(name = "recorded_on")
     private String recordedOn;
 
+    /** Represents the date and time at which server picked the weather-stamp record from openweather.org
+     */
     @CreationTimestamp
     @Column(name = "reported_on")
     private LocalDateTime reportedOn;

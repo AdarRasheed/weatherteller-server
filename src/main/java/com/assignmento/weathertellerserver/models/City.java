@@ -2,6 +2,9 @@ package com.assignmento.weathertellerserver.models;
 
 import javax.persistence.*;
 
+/**
+ * A City.
+ */
 @Entity
 @Table(name = "cities")
 public class City {
@@ -10,12 +13,18 @@ public class City {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    /** Represents openweather.org platform assigned id for a city
+     */
     @Column(name = "openweather_id")
     private Long openweatherId;
 
+    /** Represents name of the city
+     */
     @Column(name = "name")
     private String name;
 
+    /** Represents country code of the country the city belongs to
+     */
     @Column(name = "country")
     private String country;
 

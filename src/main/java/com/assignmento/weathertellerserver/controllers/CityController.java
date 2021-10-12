@@ -10,12 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * REST controller for managing {@link com.assignmento.weathertellerserver.models.City}.
+ */
 @RestController
 public class CityController {
 
     @Autowired
     CityRepository cityRepository;
 
+    /**
+     * {@code GET  /cities : Retrieve all cities known to the system.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the list of all city known to the system
+     */
     @GetMapping("/cities")
     public ResponseEntity<List<City>> getAllCities() {
 

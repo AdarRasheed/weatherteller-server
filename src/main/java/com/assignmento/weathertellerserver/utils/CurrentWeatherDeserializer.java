@@ -7,8 +7,17 @@ import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Deserializes current weather json polled from openweather.org platform to current weather-stamp model
+ */
 public class CurrentWeatherDeserializer implements JsonDeserializer<WeatherStamp> {
 
+    /**
+     * Call this function to to deserialize polled current weather json picking only required attributes
+     *
+     * @return the {@link WeatherStamp} entity model
+     *
+     */
     @Override
     public WeatherStamp deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject jObject = jsonElement.getAsJsonObject();

@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
+/**
+ * Proecessor to log any generic exchange in a custom defined fashion
+ */
 @Component
 public class GenericExchangeLoggingProcessor implements Processor {
 
